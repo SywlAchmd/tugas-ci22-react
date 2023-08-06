@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  background-color: white;
+  width: 1400px;
+  height: 132px;
+  justify-content: center;
+  gap: 40px;
+  border-radius: 50px;
+  align-items: center;
+}
+
+.photo {
+  padding-left: 37px;
+}
+
+.photo img {
+  width: 86px;
+  height: 86px;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.trashBtn {
+  display: flex;
+  cursor: pointer;
+  padding-right: 70px;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
