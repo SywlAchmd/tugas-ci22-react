@@ -1,30 +1,36 @@
-import styles from "./ContactCard.module.css";
-import profile from "../../assets/icons/profile.svg";
-import trash from "../../assets/icons/trash.svg";
+// import package from npm
 import PropTypes from "prop-types";
 
+// import assets
+import profile from "../../assets/icons/profile.svg";
+import trash from "../../assets/icons/trash.svg";
+
+// import styles
+import styles from "./ContactCard.module.css";
+
 export default function ContactCard(props) {
-  const { id, name, phone, email } = props.contact;
+  const { contact: {id, name, phone, email}, removeContact } = props;
 
   return (
     <section className={styles.container}>
-      <div className={styles.photo}>
+      <header className={styles.photo}>
         <img src={profile} alt="pfp" />
-      </div>
-      <div className={styles.body}>
-        <div className={styles.contactInfo}>
+      </header>
+      <main className={styles.body}>
+        <section className={styles.contactInfo}>
           <h2>{name}</h2>
           <p>{phone}</p>
           <p>{email}</p>
-        </div>
-        <div className={styles.trashBtn}>
+        </section>
+        
+        <section className={styles.trashBtn}>
           <img
             src={trash}
             alt="trash"
-            onClick={() => props.removeContact(id)}
+            onClick={() => removeContact(id)}
           />
-        </div>
-      </div>
+        </section>
+      </main>
     </section>
   );
 }
@@ -35,6 +41,6 @@ ContactCard.propTypes = {
     name: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   removeContact: PropTypes.func.isRequired,
 };

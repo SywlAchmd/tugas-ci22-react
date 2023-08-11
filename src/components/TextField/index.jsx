@@ -1,10 +1,13 @@
-import styles from "./TextField.module.css";
+// import from react and package from npm
 import { useState } from "react";
 import propTypes from "prop-types";
 
+// import styles
+import styles from "./TextField.module.css";
+
 export default function TextField(props) {
   const { placeholder, onChange, errorMsg, value } = props;
-  const [showErrorMsg, setShowErrorMsg] = useState(true);
+  const [showErrorMsg, setShowErrorMsg] = useState(false);
   const trimmedValue = value.trim();
 
   const handleEmptyInput = () => {
@@ -16,18 +19,19 @@ export default function TextField(props) {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <form onSubmit={handleEmptyInput}>
+    <section className={styles.wrapper}>
+      <form>
         <input
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onBlur={handleEmptyInput}
         />
       </form>
-      {showErrorMsg && trimmedValue <= 0 && (
+      {showErrorMsg &&(
         <div className={styles.emptyAlert}>{errorMsg}</div>
       )}
-    </div>
+    </section>
   );
 }
 

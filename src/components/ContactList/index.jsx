@@ -1,13 +1,16 @@
-import ContactCard from "../ContactCard";
-import styles from "./ContactList.module.css";
+// import package from npm
 import PropTypes from "prop-types";
 
-export default function ContactList(props) {
-  const removeContact = (id) => {
-    props.removeContact(id);
-  };
+// import components
+import ContactCard from "../ContactCard";
 
-  const renderContactList = props.contacts.map((contact) => {
+// import styles
+import styles from "./ContactList.module.css";
+
+export default function ContactList(props) {
+  const { contacts, removeContact } = props;
+
+  const renderContactList = contacts.map((contact) => {
     return (
       <ContactCard
         key={contact.id}
@@ -18,13 +21,13 @@ export default function ContactList(props) {
   });
 
   return (
-    <div
+    <main
       className={`${styles.contactList} ${
         renderContactList.length === 0 ? styles.emptyBackground : ""
       }`}
     >
       {renderContactList}
-    </div>
+    </main>
   );
 }
 

@@ -1,8 +1,13 @@
-import "./App.css";
+// import from react and package from npm
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
+// import components
 import ContactList from "./components/ContactList";
 import Modal from "./components/Modal";
+
+// import styles
+import "./App.css";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -21,21 +26,24 @@ function App() {
 
   return (
     <main className="main">
-      <div className="newContactBtn">
+      <section className="newContactBtn">
         <button onClick={() => setOpenModal(true)}>Add new contact</button>
-      </div>
-      <div className="title">
+      </section>
+
+      <section className="title">
         <h1>Contact List</h1>
-      </div>
+      </section>
+
       {openModal && (
         <Modal
           addContact={addContactHandler}
           close={() => setOpenModal(false)}
         />
       )}
-      <div className="container">
+
+      <section className="container">
         <ContactList contacts={contacts} removeContact={removeContactHandler} />
-      </div>
+      </section>
     </main>
   );
 }
